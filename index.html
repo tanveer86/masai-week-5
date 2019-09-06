@@ -1,0 +1,137 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+</head>
+<body>
+
+    <div id="inputTag" class="container mt-5 text-center">
+        <div class="row">
+            <div class="col-12">
+                <h1>Welcome to Movie List</h1>
+                <p>Creat your account on our website to add movies to your watch list.</p>
+            </div>
+        </div>
+        <div class="row bg-danger p-4 rounded-pill text-white">
+            <div class="col-4">
+                    <div id="idName" class="form-group">
+                    <label class="font-weight-bold" for="">Your Name *</label>
+                    <input id="nameInput" class="form-control rounded-pill" type="text" placeholder="Please Enter Your Name">
+                    <p id="nameError" class="text-warning"></p>
+                </div>
+            </div>
+            <div class="col-4">
+                <div id="idEmail" class="form-group">
+                    <label class="font-weight-bold" for="">Your Email *</label>
+                    <input id="emailInput" class="form-control rounded-pill" type="text" placeholder="Please Enter Your Email ID">
+                    <p id="emailError" class="text-warning"></p>
+                </div>
+            </div>
+            <div class="col-4">
+                <div id="idPassword" class="form-group">
+                    <label class="font-weight-bold" for="">Your Password *</label>
+                    <input id="passwordInput" class="form-control rounded-pill" type="text" placeholder="Please Enter Your Password">
+                    <p id="passwordError" class="text-warning"></p>
+                </div>
+            </div>
+            <div class="col-12 text-center">
+                <div>
+                    <button id="registerButton" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">REGISTER NOW</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="myDetails" class="container-fluid">
+        <div class="row">
+            <div id="detailsDiv" class="col-6 bg-danger p-5 text-center text-white">
+                <!-- All User Details Display Here -->
+            </div>
+            <div class="col-6 bg-success p-5 text-center text-white">
+                <small>Comming Soon</small>
+                <h1>Your Account Details</h1>
+                <h2>Number of Movies in Watchlist: 10</h2>
+                <h2>Last Movie Added: End Games</h2>
+            </div>
+        </div>
+    </div>
+
+    <div id="searchOption" class="container text-center mt-5">
+        <div class="row">
+            <div class="col-12 form-group">
+                <h2>Enter Movie or Series Name to Search</h2>
+                <input id="movieInput" class="form-control rounded-pill form-control-lg" type="text" placeholder="Enter Movie Name: eg Avatar">
+            </div>
+            <div class="col-12">
+                <button id="singleMovie" class="btn btn-success btn-lg" title="Click here if you know movie name">Find Single Movie</button>
+                <button id="searchMovie" class="btn btn-danger btn-lg" title="Click here to see multiple movies with same name">Search All Movies</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="singleMovieDiv" class="container mt-5">
+        <div class="card mb-3">
+        <div class="row no-gutters">
+            <div class="col-md-3">
+            <img id="singleMovieImage" src="https://www.alpineflorist.co.nz/wp-content/uploads/2018/07/image-coming-soon.jpg" class="card-img" alt="Movie">
+            </div>
+            <div class="col-md-9">
+            <div id="singleMovieDisplay" class="card-body">
+                <h4 id='singleMovieTitle' class="card-title"></h4>
+                <p id='singleMovieDate' class="card-text"></p>
+                <p id='singleMovieRating' class="card-text"></p>
+                <p id='singleMovieGenre' class="card-text"></p>
+                <p id='singleMovieActors' class="card-text"></p>
+                <p id='singleMovieDirector' class="card-text"></p>
+                <p id='singleMoviePlot' class="card-text"></p>
+                <button id="singleMovieFavorite" class="btn btn-danger btn-lg" title="Add this movie to your watchlist">Add to Watchlist</button>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div id="searchMovieDiv" class="container text-center mt-5">
+        <div id="searchMovieRow" class="row">
+            
+        </div>
+    </div>
+
+
+
+
+      
+      <!-- Modal this shows for registration -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+              <h5 class="modal-title text-center" id="exampleModalCenterTitle">Welcome to Movie List</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+              <h2 id="welcomeMessage" class="mb-3">Registration Successful</h2>
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Create My Watchlist</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+   
+
+</body>
+</html>
