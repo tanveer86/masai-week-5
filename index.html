@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Movie List</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
 </head>
@@ -52,11 +52,25 @@
                 <!-- All User Details Display Here -->
             </div>
             <div class="col-6 bg-success p-5 text-center text-white">
-                <small>Comming Soon</small>
                 <h1>Your Account Details</h1>
-                <h2>Number of Movies in Watchlist: 10</h2>
-                <h2>Last Movie Added: End Games</h2>
+                <h2 id="moviesNumber">Number of Movies in Watchlist: 0</h2>
+                <h2 id="lastAddMovie">Last Added: No Movies</h2>
             </div>
+        </div>
+    </div>
+
+    <div id="watchListTitle" class="container mt-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2>Movies in My Watchlist</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div id="moviesAddedList" class="row">
+            
+            </div>      
         </div>
     </div>
 
@@ -101,10 +115,6 @@
         </div>
     </div>
 
-
-
-
-      
       <!-- Modal this shows for registration -->
       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -132,6 +142,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="script.js"></script>
    
-
 </body>
 </html>

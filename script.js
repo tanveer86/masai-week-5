@@ -4,6 +4,7 @@ $("#registerButton").hide();
 $("#myDetails").hide();
 $("#singleMovieDiv").hide();
 $("#searchOption").hide();
+$("#watchListTitle").hide();
 
 $('#nameInput').keyup(function() {
 
@@ -63,7 +64,7 @@ $("#registerButton").click(function(){
     var emailValue = $("#emailInput").val();
     var passwordValue = $("#passwordInput").val();
     // Got this date function from mozilla
-    var todayDate = new Date(1567783469196).toDateString();
+    var todayDate = new Date().toDateString();
 
     if (nameValue != '' && emailValue != '' && passwordValue != '') {
         $("#inputTag").hide();
@@ -74,12 +75,25 @@ $("#registerButton").click(function(){
         $("#detailsDiv").append("<h1 id='nameTag' class='mb-3'> Your Name: " + nameValue + "</h1>");
         $("#nameTag").append("<h2 id='emailTag'>Your Email: " + emailValue + "</h2>");
         $("#emailTag").append("<h2 id='lastLoginTag'>Your Last Login: " + todayDate + "</h2>");
-        $("#welcomeMessage").append("<p>Dear " + "<strong>" + nameValue + "</strong>" + ", we have sent you an email for verification. We requests you to kindly click and verifiy your email id.</p>")
+        $("#welcomeMessage").append("<p>Dear " + "<strong>" + nameValue + "</strong>" + ", we have sent you an email for verification. We request you to kindly click and verifiy your email id.</p>")
 
     } else {
         alert('All fields are required!');
     }
 })
+
+function Moviestore(movietitle, movieposter, moviedate, movieimdbstar, moviegenre, movieactors, moviedirector, movieplot){
+    this.movietitle = movietitle;
+    this.movieposter = movieposter;
+    this.moviedate = moviedate;
+    this.movieimdbstar = movieimdbstar;
+    this.moviegenre = moviegenre;
+    this.movieactors = movieactors;
+    this.moviedirector = moviedirector;
+    this.movieplot = movieplot;
+}
+
+var moviesArr = [];
 
 $("#singleMovie").click(function(){
     var movieInput = $("#movieInput").val();
@@ -104,13 +118,14 @@ $("#singleMovie").click(function(){
             $("#singleMovieActors").text("Actors: " + movieData.Actors);
             $("#singleMovieDirector").text("Director: " + movieData.Director);
             $("#singleMoviePlot").text("Plot: " + movieData.Plot);
+
         }else {
             alert("Sorry no Movies Found, Please Check Spelling");
         }
     });
-  });
+});
 
-  $("#searchMovie").click(function(){
+$("#searchMovie").click(function(){
     var movieAllInput = $("#movieInput").val();
     $.ajax({
       url: "http://www.omdbapi.com/?apikey=b19722fa&s=" + movieAllInput,
@@ -122,18 +137,45 @@ $("#singleMovie").click(function(){
 
             movieAllData.Search.forEach(function(searchData){
 
-                $("#searchMovieRow").append("<div id='searchSingleMovie' class='col-3 mb-4'><div id='searchCard' class='card'><img id='searchMovieImage' height='300' src='" + searchData.Poster + "'" + " class='card-img-top' alt=" + searchData.Title + "><div id='searchCardBody' class='card-body'><p id='searchMovieTitle' class='card-title font-weight-bold'>" + searchData.Title + "</p><p id='searchMovieYear' class='card-text'> Released Year: " + searchData.Year + "</p><a id='searchMovie' href='#' class='btn btn-danger'>Add to Watchlist</a></div></div></div>");
+                $("#searchMovieRow").append("<div id='searchSingleMovie' class='col-3 mb-4'><div id='searchCard' class='card'><img id='searchMovieImage' height='300' src='" + searchData.Poster + "'" + " class='card-img-top' alt=" + searchData.Title + "><div id='searchCardBody' class='card-body'><p id='searchMovieTitle' class='card-title font-weight-bold'>" + searchData.Title + "</p><p id='searchMovieYear' class='card-text'> Released Year: " + searchData.Year + "</p><button class='btn btn-danger'>Add to Watchlist</button></div></div></div>");
 
             })
-
+        
         }else {
             alert("Sorry no Movies Found, Please Check Spelling");
         }
-
     });
     $("#searchMovieRow").empty();
-  });
+});
 
 $("#singleMovieFavorite").click(function(){
-    $("#singleMovieDiv").hide(3000);
+    $("#moviesAddedList").empty();
+    $("#watchListTitle").show();
+    var movieName = $("#singleMovieTitle").text();
+    var movieImage = $("#singleMovieImage").attr("src");
+    var movieDate = $("#singleMovieDate").text();
+    var movieRating = $("#singleMovieRating").text();
+    var movieGenre = $("#singleMovieGenre").text();
+    var movieActors = $("#singleMovieActors").text();
+    var movieDirector = $("#singleMovieDirector").text();
+    var moviePlot = $("#singleMoviePlot").text();
+
+    var addToList = new Moviestore(movieName, movieImage, movieDate, movieRating, movieGenre, movieActors, movieDirector, moviePlot);
+            
+    moviesArr.push(addToList);
+    $("#singleMovieDiv").hide(1000);
+    addWishList(moviesArr);
+    
 })
+
+function addWishList(movieList){
+
+    movieList.forEach(function(addedMovieData){
+        
+        $("#moviesAddedList").append("<div class='col-2 mb-3'><img src='" + addedMovieData.movieposter + "' alt='" + addedMovieData.movietitle + "' class='img-fluid' title='" + addedMovieData.movietitle + "'></div>");
+        $("#lastAddMovie").text("Last Added " + addedMovieData.movietitle)
+    }) 
+    
+    $("#moviesNumber").text("Number of Movies in Watchlist: " + movieList.length);
+    
+}
