@@ -11,7 +11,7 @@ $('#nameInput').keyup(function() {
     var nameLength = $(this).val().length;
 
     if (nameLength < 3) {
-        $("#nameError").text('Please enter atelest 3 chracters');
+        $("#nameError").text('Please enter atlest 3 chracters');
         $("#idEmail").hide();
         $("#idPassword").hide();
         $("#registerButton").hide();
@@ -68,6 +68,10 @@ $("#registerButton").click(function(){
 
     if (nameValue != '' && emailValue != '' && passwordValue != '') {
         $("#inputTag").hide();
+        $("#carouselExampleIndicators").hide();
+        $("#featuredTrailers").hide();
+        $("#youtubeTrailers").hide();
+        $("#footer").hide();
         $("#displayTag").show();
         $("#myDetails").show(3000);
         $("#searchOption").show();
@@ -137,7 +141,7 @@ $("#searchMovie").click(function(){
 
             movieAllData.Search.forEach(function(searchData){
 
-                $("#searchMovieRow").append("<div id='searchSingleMovie' class='col-3 mb-4'><div id='searchCard' class='card'><img id='searchMovieImage' height='300' src='" + searchData.Poster + "'" + " class='card-img-top' alt=" + searchData.Title + "><div id='searchCardBody' class='card-body'><p id='searchMovieTitle' class='card-title font-weight-bold'>" + searchData.Title + "</p><p id='searchMovieYear' class='card-text'> Released Year: " + searchData.Year + "</p><button class='btn btn-danger'>Add to Watchlist</button></div></div></div>");
+                $("#searchMovieRow").append("<div id='searchSingleMovie' class='col-sm-3 mb-4'><div id='searchCard' class='card'><img id='searchMovieImage' height='300' src='" + searchData.Poster + "'" + " class='card-img-top' alt=" + searchData.Title + "><div id='searchCardBody' class='card-body'><p id='searchMovieTitle' class='card-title font-weight-bold'>" + searchData.Title + "</p><p id='searchMovieYear' class='card-text'> Released Year: " + searchData.Year + "</p><button class='btn btn-danger'>Add to Watchlist</button></div></div></div>");
 
             })
         
@@ -173,7 +177,7 @@ function addWishList(movieList){
     movieList.forEach(function(addedMovieData){
         
         $("#moviesAddedList").append("<div class='col-2 mb-3'><img src='" + addedMovieData.movieposter + "' alt='" + addedMovieData.movietitle + "' class='img-fluid' title='" + addedMovieData.movietitle + "'></div>");
-        $("#lastAddMovie").text("Last Added " + addedMovieData.movietitle)
+        $("#lastAddMovie").text("Last Added " + addedMovieData.movietitle);
     }) 
     
     $("#moviesNumber").text("Number of Movies in Watchlist: " + movieList.length);
